@@ -12,12 +12,6 @@ router.get('/', function(req, res) {
     res.send({greeting: 'Hello React x Node.js'});
 });
 
-<<<<<<< HEAD
-router.post('/test', (req,res)=>{
-    res.send({success: true});
-})
-
-=======
 router.post('/register',(req,res) =>{
     const user = new User(req.body);
     user.save((err,userInfo)=>{
@@ -33,7 +27,7 @@ router.post('/login',(req,res)=>{
     User.findOne({email:req.body.email},(err,user)=>{
         if(!user){
             return res.json({
-                loginSuccess: fail,
+                loginSuccess: "fail",
                 message:"제공된 이메일에 해당하는 유저가 없습니다."
             })
         }
@@ -54,5 +48,4 @@ router.post('/login',(req,res)=>{
     })
 })
    
->>>>>>> 71b9a0b568775392ddf221cf71b42580e8c6d692
 module.exports = router;
