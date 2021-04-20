@@ -1,8 +1,11 @@
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://spectra:artceps@cluster0.row7g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+const mongoose = require('mongoose');
+module.exports = () => {
+  function connect() {
+    mongoose.connect( 'mongodb+srv://spectra:artceps@cluster0.row7g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    , {useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true,useFindAndModify:false
+    }).then(()=> console.log('MongoDB Connected...'))
+    .catch(err => console.log(err));
+  }
+  connect();
+  mongoose.connection.on('disconnected', connect);
+};
