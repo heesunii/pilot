@@ -1,18 +1,18 @@
 var express = require('express');
-var router = express.Router();
-const {User} = require("../model/User");
+var app = express()
+const {User} = require("./model/User");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const db = require("../db.js");
+const db = require("./db.js");
 db();
 
-router.use(bodyParser.urlencoded({extended:true}));
-router.use(bodyParser.json());
-router.get('/', function(req, res) {
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.get('/', function(req, res) {
     res.send({greeting: 'Hello React x Node.js'});
 });
 
-router.post('/register',(req,res) =>{
+app.post('/api/users/register',(req,res) =>{
     const user = new User(req.body);
     user.save((err,userInfo)=>{
         if(err) return res.json({success:false,err})
@@ -22,7 +22,8 @@ router.post('/register',(req,res) =>{
     });
    });
    
-router.post('/login',(req,res)=>{
+app.post('/api/users/login', (req, res) => {
+
     //요청된 이메일을 데이터베이스 있는지 찾는다.
     User.findOne({email:req.body.email},(err,user)=>{
         if(!user){
@@ -48,4 +49,5 @@ router.post('/login',(req,res)=>{
     })
 })
    
-module.exports = router;
+const port = 5000
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
