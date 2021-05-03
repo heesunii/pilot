@@ -36,6 +36,9 @@ function Login(props) {
     }
 
     return ( 
+    
+    <div className="auth-wrapper">
+      <div className="auth-inner">
         <form onSubmit ={onSubmitHandler}>
         <h3>Sign In</h3>
 
@@ -61,6 +64,8 @@ function Login(props) {
             Forgot <a href="#">password?</a>
         </p>
     </form>
+    </div>
+    </div>
     );
 }
 export default withRouter(Login)

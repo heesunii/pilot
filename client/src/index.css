@@ -55,6 +55,13 @@ body, html, .App, #root, .auth-wrapper {
   padding-bottom: 20px;
 }
 
+.auth-wrapper h2 {
+  text-align: left;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
 .custom-control-label {
   font-weight: 400;
 }

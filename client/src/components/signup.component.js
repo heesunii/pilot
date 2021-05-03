@@ -9,7 +9,7 @@ function Register(props){
     const [Email, setEmail] = useState("")
     const [Name, setName] = useState("")
     const [Password, setPassword] = useState("")
-    const [confirmPassword, setconfirmPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
 
     const onEmailHandler = (event) => {
         setEmail(event.currentTarget.value)
@@ -24,7 +24,7 @@ function Register(props){
     }
 
     const onConfirmPasswordHandler = (event) => {
-        setPassword(event.currentTarget.value)
+        setConfirmPassword(event.currentTarget.value)
     }
 
     const onSubmitHandler = (event) => {
@@ -48,34 +48,39 @@ function Register(props){
         })
     }
     return (
+        <div className="auth-wrapper">
+        <div className="auth-inner">
         <form onSubmit={onSubmitHandler}>
         <h3>Sign Up</h3>
 
         <div className="form-group">
-            <label>First name</label>
-            <input name="firstname" value={this.state.firstname} className="form-control" placeholder="First name"  onChange={this.handleChange}/>
-        </div>
-
-        <div className="form-group">
-            <label>Last name</label>
-            <input name="lastname" value={this.state.lastname} className="form-control" placeholder="Last name" onChange={this.handleChange}/>
+            <label>Name</label>
+            <input name="name" value={Name} className="form-control" placeholder="Enter Name"  onChange={onNameHandler}/>
         </div>
 
         <div className="form-group">
             <label>Email address</label>
-            <input name="email" value={this.state.email} className="form-control" placeholder="Enter email" onChange={this.handleChange}/>
+            <input name="email" value={Email} className="form-control" placeholder="Enter email" onChange={onEmailHandler}/>
         </div>
 
         <div className="form-group">
             <label>Password</label>
-            <input name="password" value={this.state.password} className="form-control" placeholder="Enter password" onChange={this.handleChange}/>
+            <input name="password" value={Password} className="form-control" placeholder="Enter password" onChange={onPasswordHandler}/>
         </div>
+
+        <div className="form-group">
+            <label>Password</label>
+            <input name="password" value={confirmPassword} className="form-control" placeholder="Enter Confirm Password" onChange={onConfirmPasswordHandler}/>
+        </div>
+
 
         <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
         <p className="forgot-password text-right">
             Already registered <a href="#">sign in?</a>
         </p>
         </form>
+        </div>
+        </div>
     );
 }
 
